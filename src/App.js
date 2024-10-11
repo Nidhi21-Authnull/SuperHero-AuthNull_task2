@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Layout } from 'antd';
 import Navbar from './components/Navbar';
-import HeroList from './components/SuperheroList';
+import HeroList from './pages/SuperheroList';
 import HeroDetailModal from './components/HeroDetailModal';
 
 const { Header, Content } = Layout;

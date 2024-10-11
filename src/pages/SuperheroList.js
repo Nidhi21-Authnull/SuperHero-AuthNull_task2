@@ -7,28 +7,39 @@ const HeroList = ({ heroes, onViewDetails }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Filter heroes based on the search term
-  const filteredHeroes = searchTerm 
-    ? heroes.filter(hero => 
+  const filteredHeroes = searchTerm
+    ? heroes.filter(hero =>
         hero.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
-    : heroes; 
+    : heroes;
 
   return (
     <div>
-
       <Search
         placeholder="Search for a hero"
         onSearch={value => setSearchTerm(value)}
         style={{ marginBottom: '16px' }}
       />
-
       {filteredHeroes.length > 0 ? (
         <Row gutter={[16, 16]} justify="center">
           {filteredHeroes.map((hero) => (
             <Col xs={24} sm={12} md={8} lg={6} key={hero.id}>
               <Card
                 title={hero.name}
-                cover={<img alt={hero.name} src={hero.image.url} />}
+                hoverable
+                cover={
+                  <img
+                    alt={hero.name}
+                    src={hero.image.url}
+                    style={{ height: '200px', objectFit: 'cover' }} 
+                  />
+                }
+                style={{
+                  height: '400px',  
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                }}
               >
                 <p>{hero.biography['full-name']}</p>
                 <Button type="primary" onClick={() => onViewDetails(hero.id)}>
